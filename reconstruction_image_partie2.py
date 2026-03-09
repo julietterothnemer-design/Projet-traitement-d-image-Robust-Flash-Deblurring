@@ -350,8 +350,8 @@ def save_rgb01(path, img):
 
 if __name__ == "__main__":
     # Chargement des images recadrées / alignées
-    B_rgb = load_rgb01("B_crop.png")
-    F_rgb = load_rgb01("F_crop.png")
+    B_rgb = load_rgb01("Images/B_crop.png")
+    F_rgb = load_rgb01("Images/F_crop.png")
 
     # Vérification des tailles
     if F_rgb.shape != B_rgb.shape:
@@ -394,4 +394,5 @@ if __name__ == "__main__":
 
     # Sauvegarde de l'image reconstruite
     save_rgb01("reconstruction_finale.png", I_rgb)
+
     print("\nImage sauvegardée : reconstruction_finale.png")
