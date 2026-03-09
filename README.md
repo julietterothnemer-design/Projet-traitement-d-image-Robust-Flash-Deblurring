@@ -42,14 +42,9 @@ K_est_crop.npy
 
 ## 2. Reconstruction de l'image complète
 
-Une fois le noyau estimé, la reconstruction de l'image complète est effectuée en minimisant :
+Une fois le noyau estimé, la reconstruction de l'image complète est effectuée en minimisant une fonction énergie.
 
-\[
-||I*K - B||^2 + \lambda_f M \rho(\nabla I - \nabla F) + \lambda_i |\nabla I|^\alpha
-\]
-
-avec :
-
+Impliquant :
 - **I** : image reconstruite  
 - **K** : noyau de flou estimé  
 - **B** : image floue  
@@ -70,4 +65,79 @@ La reconstruction est appliquée **canal par canal (RGB)**.
 # Structure du projet
 
 
+project/
+│
+├── recadrage_images.py
+│ Alignement des images flash et blur avec ECC et recadrage
+│
+├── estimer_noyau_partie1.py
+│ Estimation du noyau de flou à partir d'un patch
+│
+├── reconstruction_image_partie2.py
+│ Reconstruction de l'image complète
+│
+│
+│── Images
+├ B_crop.png
+├ F_crop.png
+│ Images alignées utilisées dans l'algorithme issues de recadrage_images.py
+├ Flash_originale.png
+├ flou_originale.png
+│ Images issues directement de l'appareil photo
+│
+├── K_est_crop.npy
+│ Noyau de flou estimé dans le fichier estimer_noyau_partie1
+│
+│
+│── Rapport et source
+│ Rapport d'analyse et présentation méthode
+│ Papier de recherche source sur la méthode
+└
+
+# Pipeline d'exécution
+
+1️⃣ Alignement des images :
+recadrage_images.py
+
+
+2️⃣ Estimation du noyau :
+estimer_noyau_partie1.py
+
+
+3️⃣ Reconstruction de l'image :
+ reconstruction_image_partie2.py
+
+
+# Dépendances
+
+Python 3.9+
+Bibliothèques nécessaires :
+numpy
+opencv-python
+matplotlib
+scipy
+
+
+Installation :
+pip install numpy opencv-python matplotlib scipy
+
+
+# Résultats
+
+Les sorties principales de l'algorithme sont :
+
+- l'image floue \(B\)
+- l'image flash \(F\)
+- le noyau estimé \(K\)
+- l'image reconstruite \(I\)
+- le masque de confiance \(M\)
+
+La reconstruction améliore la netteté des contours tout en conservant l'illumination ambiante de la scène.
+
+
+# Auteur
+
+Juliette Rothnemer  
+Yvan Glory
+Projet de traitement d'image – Institut d'Optique
 
