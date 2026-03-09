@@ -321,8 +321,8 @@ def update_K_masked(B, I, K, M, alpha=0.8, lam_k=0.02, iters=3):
 
 #  chargement des images INPUT
 
-F = gray01("F_crop.png")
-B = gray01("B_crop.png")
+F = gray01("Images/F_crop.png")
+B = gray01("Images/B_crop.png")
 
 # Mise à la même taille
 B = cv2.resize(B, (F.shape[1], F.shape[0]), interpolation=cv2.INTER_LINEAR)
@@ -425,4 +425,5 @@ plt.show()
 
 # Sauvegarde du noyau estimé
 np.save("K_est_crop.npy", K_est)
+
 print("Kernel sauvegardé dans K_est.npy")
